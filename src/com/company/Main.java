@@ -1,29 +1,40 @@
 package com.company;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
-        int[] numbers = {2, 1, 3, 5, 4, 6, 8, 7, 9, 10};
-        int[] empty = new int[10];
-        mergeSort(numbers);
+//        int[] numbers = {2, 1, 3, 5, 4, 6, 8, 7, 9, 10};
+//        int[] empty = new int[10];
+        Random random = new Random();
+        int[] numbers = new int[1000];
+        for(int i = 0; i < 1000; i++){
+            int newNume = random.nextInt(1000);
+            boolean contains = Arrays.asList(numbers).contains(newNume);
+            if()
+        }
+        int[] empty = new int[1000];
+        sort(numbers);
         for(int a = 0; a < numbers.length; a++){
             System.out.println(numbers[a]);
         }
     }
-        public static void mergeSort(int[] elements) {
+        public static void sort(int[] elements) {
             int n = elements.length;
             int[] temp = new int[n];
-            mergeSortHelper(elements, 0, n - 1, temp);
+            sortBuilder(elements, 0, n - 1, temp);
         }
-        public static void mergeSortHelper(int[] elements, int from, int to, int[] temp) {
+        public static void sortBuilder(int[] elements, int from, int to, int[] temp) {
             if(from < to){
                 int middle = (from + to) / 2;
-                mergeSortHelper(elements, from, middle, temp);
-                mergeSortHelper(elements, middle + 1, to, temp);
-                merge(elements, from, middle, to, temp);
+                sortBuilder(elements, from, middle, temp);
+                sortBuilder(elements, middle + 1, to, temp);
+                sorter(elements, from, middle, to, temp);
             }
         }
-        public static void merge(int[] elements, int from, int mid, int to, int[] temp){
+        public static void sorter(int[] elements, int from, int mid, int to, int[] temp){
             int i = from;
             int j = mid + 1;
             int k = from;
